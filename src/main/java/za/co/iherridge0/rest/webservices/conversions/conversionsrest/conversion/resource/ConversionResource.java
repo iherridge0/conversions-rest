@@ -19,4 +19,8 @@ public class ConversionResource {
 		return conversionDaoService.convertK2C(kelvin);
 	}
 
+	@PostMapping("conversions/ctok")
+	public Conversion convertC2K(@RequestBody double celcius) {
+		return conversionDaoService.convertC2K(celcius);
+	}
 }

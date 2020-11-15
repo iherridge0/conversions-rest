@@ -20,7 +20,16 @@ public class Conversion {
 		super();
 		if(conversionType.equals(ConversionType.KTOC)) {
 			this.k = value;
-			this.c = k - 273.15;
+			if(value==0)
+				this.c = -273.15;
+			else
+				this.c = k - 273.15;
+		} else if(conversionType.equals(ConversionType.CTOK)) {
+			this.c = value;
+			if(value==0)
+				this.k = 273.15;
+			else
+				this.k = c + 273.15;
 		}
 	}
 

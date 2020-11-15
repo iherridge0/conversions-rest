@@ -12,5 +12,8 @@ public class ConversionDaoService {
 		return new Conversion(k, ConversionType.KTOC);
 	}
 	
+	public Conversion convertC2K(double c) {
+		return new Conversion(c, ConversionType.CTOK);
+	}
 
 }
