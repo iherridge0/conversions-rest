@@ -42,9 +42,15 @@ public class Conversion {
 		} else if(conversionType.equals(ConversionType.MTOK)) {
 			this.miles = value;
 			if(value==0)
-				this.km = 1.609;
+				this.km = 0;
 			else
-				this.km = miles + 1.609;
+				this.km = miles * 1.609;
+		} else if(conversionType.equals(ConversionType.KTOM)) {
+			this.km = value;
+			if(value==0)
+				this.miles = 0;
+			else
+				this.miles = km / 1.609;
 		}
 	}
 

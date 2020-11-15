@@ -19,4 +19,8 @@ public class ConversionDaoService {
 	public Conversion convertM2K(double miles) {
 		return new Conversion(miles, ConversionType.MTOK);
 	}
+
+	public Conversion convertK2M(double km) {
+		return new Conversion(km, ConversionType.KTOM);
+	}
 }

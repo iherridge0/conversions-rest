@@ -60,4 +60,18 @@ public class ConversionResource {
 		
 		return mapping;
 	}
+	
+	@PostMapping("conversions/ktom")
+	public MappingJacksonValue convertK2M(@RequestBody double km) {
+		Conversion conversion = conversionDaoService.convertK2M(km);
+		
+		SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("miles", "km");
+		
+		FilterProvider filters = new SimpleFilterProvider().addFilter("ConversionFilter", filter);
+		
+		MappingJacksonValue mapping = new MappingJacksonValue(conversion);
+		mapping.setFilters(filters);
+		
+		return mapping;
+	}
 }
