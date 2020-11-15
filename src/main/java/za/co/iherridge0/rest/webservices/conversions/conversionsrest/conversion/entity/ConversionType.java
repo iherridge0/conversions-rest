@@ -5,4 +5,6 @@ public abstract interface ConversionType {
 	public static final String KTOC = "KTOC";
 	
 	public static final String CTOK = "CTOK";
+	
+	public static final String MTOK = "MTOK";
 }

@@ -1,16 +1,25 @@
 package za.co.iherridge0.rest.webservices.conversions.conversionsrest.conversion.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+@JsonFilter("ConversionFilter")
 @ApiModel(description = "This API Model describes the Conversion model.")
 public class Conversion {
 
-	@ApiModelProperty(notes = "FORMULA: 1 Kelvin equals 1 Kelvin - 273.15 Celcius")
-	private double k;
+	@ApiModelProperty(notes = "FORMULA: 1 Kelvin equals 273.15 Celcius")
+	private double kelvin;
 	
-	@ApiModelProperty(notes = "FORMULA: 1 Celcius equals 1 Celcius + -273.15 Kelvin ")
-	private double c;
+	@ApiModelProperty(notes = "FORMULA: 1 Celcius equals -273.15 Kelvin ")
+	private double celcius;
+	
+	@ApiModelProperty(notes = "FORMULA: 1 Mile equals 1.609 Kilometre")
+	private double miles;
+	
+	@ApiModelProperty(notes = "FORMULA: 1 Kilometre equals 1.609 Miles")
+	private double km;
 	
 	protected Conversion() {
 		
@@ -19,36 +28,58 @@ public class Conversion {
 	public Conversion(double value, String conversionType) {
 		super();
 		if(conversionType.equals(ConversionType.KTOC)) {
-			this.k = value;
+			this.kelvin = value;
 			if(value==0)
-				this.c = -273.15;
+				this.celcius = -273.15;
 			else
-				this.c = k - 273.15;
+				this.celcius = kelvin - 273.15;
 		} else if(conversionType.equals(ConversionType.CTOK)) {
-			this.c = value;
+			this.celcius = value;
 			if(value==0)
-				this.k = 273.15;
+				this.kelvin = 273.15;
 			else
-				this.k = c + 273.15;
+				this.kelvin = celcius + 273.15;
+		} else if(conversionType.equals(ConversionType.MTOK)) {
+			this.miles = value;
+			if(value==0)
+				this.km = 1.609;
+			else
+				this.km = miles + 1.609;
 		}
 	}
 
-	public double getK() {
-		return k;
+	public double getKelvin() {
+		return kelvin;
 	}
 
-	public void setK(double k) {
-		this.k = k;
+	public void setKelvin(double kelvin) {
+		this.kelvin = kelvin;
 	}
 
-	public double getC() {
-		return c;
+	public double getCelcius() {
+		return celcius;
 	}
 
-	public void setC(double c) {
-		this.c = c;
+	public void setCelcius(double celcius) {
+		this.celcius = celcius;
 	}
-	
+
+	public double getMiles() {
+		return miles;
+	}
+
+	public void setMiles(double miles) {
+		this.miles = miles;
+	}
+
+	public double getKm() {
+		return km;
+	}
+
+	public void setKm(double km) {
+		this.km = km;
+	}
+
 	
 	
 }

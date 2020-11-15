@@ -8,12 +8,15 @@ import za.co.iherridge0.rest.webservices.conversions.conversionsrest.conversion.
 @Component
 public class ConversionDaoService {
 	
-	public Conversion convertK2C(double k) {
-		return new Conversion(k, ConversionType.KTOC);
+	public Conversion convertK2C(double kelvin) {
+		return new Conversion(kelvin, ConversionType.KTOC);
 	}
 	
-	public Conversion convertC2K(double c) {
-		return new Conversion(c, ConversionType.CTOK);
+	public Conversion convertC2K(double celcius) {
+		return new Conversion(celcius, ConversionType.CTOK);
 	}
 
+	public Conversion convertM2K(double miles) {
+		return new Conversion(miles, ConversionType.MTOK);
+	}
 }
